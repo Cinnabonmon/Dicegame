@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    html {
+      height: 100%;
+    }
+    body {
+      text-align: center;
+      font-family: Arial;
+      background-color: black;
+      color: white;
+
+      button {
+        background-color: white;
+        border: none;
+        border-radius: 20px;
+        width: 200px;
+        font-size: 50px;
+        color: orange;
+        cursor: pointer;
+        margin: 20px;
+      }
+
+      button:hover {
+        background-color: orange;
+        color: white;
+        box-shadow: 2px 2px 10px black;
+      }
+
+      button:active {
+        background-color: rgb(177, 118, 8); 
+        font-size: 45px;
+        margin: 23px;
+      }
+
+      h2, h3 {
+        display: inline-block;
+        margin: 20px 20px;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  
+
+  <h1 id="title">This is a small game of rolling the dice to get to 30 points exactly! See  how many times it takes.</h1>
+  <h1 id="rolled">0</h1>
+  <button id="roll">Roll</button>  <button id="reset">Reset</button><br>
+
+  <h2>Points:</h2>
+  <h3 id="points">0</h3>
+
+  <h2>Rolls:</h2>
+  <h3 id="rolls">0</h3><br>
+  <h3 id="try">Tries: 1</h3>
+
+
+  <script>
+
+    const rollButton = document.getElementById('roll')
+    const resetButton = document.getElementById('reset');
+    const points = document.getElementById('points');
+    const rolls = document.getElementById('rolls');
+    const rolled = document.getElementById('rolled');
+    const times = document.getElementById('try');
+
+    let totalPoints = 0;
+    let totalRolls = 0;
+    let tries = 1;
+    
+    function roll() {
+      let diceRoll = Math.floor(Math.random() * 6) + 1;
+      totalPoints = diceRoll + totalPoints;
+      totalRolls++;
+      points.innerText = totalPoints;
+      rolled.innerText = diceRoll;
+      rolls.innerText = totalRolls;
+    }
+
+    function reset() {
+      points.innerText = 0;
+      rolls.innerText = 0;
+      rolled.innerText = "0";
+      totalPoints = 0;
+      totalRolls = 0;
+      tries ++;
+      times.innerText = "Tries: " + tries;
+    }
+
+    rollButton.addEventListener("click", roll);
+    resetButton.addEventListener("click", reset);
+
+  </script>
+</body>
+</html>
